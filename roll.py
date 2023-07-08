@@ -3,6 +3,7 @@ import asyncio
 from telethon import types
 from .. import loader, utils
 
+
 @loader.tds
 class RollMod(loader.Module):
     strings = {
@@ -13,8 +14,26 @@ class RollMod(loader.Module):
     }
     _db_name = "Roll"
 
-    async def client_ready(self, client, db):
+    async def client_ready(self, _, db):
         self.db = db
+
+    @staticmethod
+    def str2bool(v):
+        return v.lower() in (
+            "yes",
+            "y",
+            "ye",
+            "yea",
+            "true",
+            "t",
+            "1",
+            "on",
+            "enable",
+            "start",
+            "run",
+            "go",
+            "да",
+        )
 
     async def rollcmd(self, m: types.Message):
         ".roll - Бросить кубик (случайное число от 1 до 100)"
