@@ -80,31 +80,3 @@ class MegaMozgMod(loader.Module):
         if "люблю тебя" == m.text.lower():
             await m.reply("я тебя тоже люблю")
             return
-        ch = self.db.get(self._db_name, "chance", 0)
-        if ch != 0:
-            if random.randint(0, ch) != 0:
-                return
-        text = m.raw_text
-        words = {
-            random.choice(list(filter(lambda x: len(x) >= 3, text.split())))
-            for _ in ".."
-        }
-        msgs = []
-        for word in words:
-            [
-                msgs.append(x)
-                async for x in m.client.iter_messages(m.chat.id, search=word)
-                if x.replies and x.replies.max_id
-            ]
-        replier = random.choice(msgs)
-        sid = replier.id
-        eid = replier.replies.max_id
-        msgs = [
-            x
-            async for x in m.client.iter_messages(
-                m.chat.id, ids=list(range(sid + 1, eid + 1))
-            )
-            if x and x.reply_to and x.reply_to.reply_to_msg_id == sid
-        ]
-        msg = random.choice(msgs)
-        await m.reply(msg)
