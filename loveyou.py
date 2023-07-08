@@ -38,7 +38,7 @@ class MegaMozgMod(loader.Module):
             "да",
         )
 
-    async def mozgcmd(self, m: types.Message):
+    async def dev(self, m: types.Message):
         ".dev <on/off/...> - Переключить режим флоресто в чате"
         args = utils.get_args_raw(m)
         if not m.chat:
@@ -61,7 +61,7 @@ class MegaMozgMod(loader.Module):
         self.db.set(self._db_name, "chats", chats)
         return await utils.answer(m, self.strings("off").format(self.strings("pref")))
 
-    async def mozgchancecmd(self, m: types.Message):
+    async def devchance(self, m: types.Message):
         ".devc <int> - Устанвоить шанс 1 к N.\n0 - всегда отвечать"
         args: str = utils.get_args_raw(m)
         if args.isdigit():
