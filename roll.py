@@ -16,7 +16,7 @@ class RollMod(loader.Module):
     async def client_ready(self, client, db):
         self.db = db
 
-    async def roll(self, m: types.Message):
+    async def rollcmd(self, m: types.Message):
         ".roll - Бросить кубик (случайное число от 1 до 100)"
         if not m.chat:
             return
