@@ -12,7 +12,7 @@ class MegaMozgMod(loader.Module):
         "on": "{}готоф трахат",
         "off": "{}ни гатоф трахат",
     }
-    _db_name = "MegaMozg"
+    _db_name = "DEVtheBest"
 
     async def client_ready(self, _, db):
         self.db = db
