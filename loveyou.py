@@ -2,6 +2,9 @@ import random
 from telethon import types
 from .. import loader, utils
 
+lol = ["я типя тожи", "ты педик?", 'асуууууууууууу', 'ичо', 'пиздец', 'явахуе', 'так ей и сказал?', 'флоресто фуре', 'попа пиписька кашака', 'я клик', 'БЛЯТЬ МЕНЯ ВЗЛОМАЛИ', 'ичо блять чмо', 'не бань пршу', 'даймне пососать']
+msgsl = ["ку", 're', 'dev', 'динахуй','иди нахуй','дон','я дон', 'клик', 'я тебя люблю', 'я типя люблю', 'я тебя любл', 'чо как', 'как дела', 'дарова', 'дорова', 'педик', 'сам такой', ]
+
 @loader.tds
 class MegaMozgMod(loader.Module):
     strings = {
@@ -77,6 +80,6 @@ class MegaMozgMod(loader.Module):
             return
         if m.chat.id not in self.db.get(self._db_name, "chats", []):
             return
-        if "люблю тебя" == m.text.lower():
-            await m.reply("я тебя тоже люблю")
+        if msgsl in m.text.lower():
+            await m.reply(random.choice(lol))
             return
