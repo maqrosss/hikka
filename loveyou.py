@@ -84,3 +84,4 @@ class MegaMozgMod(loader.Module):
             if phrase.lower() in m.text.lower():
                 await m.reply(random.choice(lol))
                 return
+
