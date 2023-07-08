@@ -36,7 +36,7 @@ class RollMod(loader.Module):
             "да",
         )
 
-    async def rollcmd(self, m: types.Message):
+    async def roll(self, m: types.Message):
         ".roll - Бросить кубик (случайное число от 1 до 100)"
         if not m.chat:
             return
@@ -59,4 +59,3 @@ class RollMod(loader.Module):
 
         result_message = f"Бросаем кубик...\n\nРезультат: {random_number}\n{result}"
         await loading_message.edit(result_message)
-
