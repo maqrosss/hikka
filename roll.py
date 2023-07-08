@@ -1,6 +1,6 @@
 import random
 import asyncio
-from telethon import types, TelegramClient
+from telethon import types
 from .. import loader, utils
 
 @loader.tds
@@ -15,26 +15,6 @@ class RollMod(loader.Module):
 
     async def client_ready(self, client, db):
         self.db = db
-        await client.start()
-        client.add_event_handler(self.watcher, types.NewMessage(incoming=True))
-
-    @staticmethod
-    def str2bool(v):
-        return v.lower() in (
-            "yes",
-            "y",
-            "ye",
-            "yea",
-            "true",
-            "t",
-            "1",
-            "on",
-            "enable",
-            "start",
-            "run",
-            "go",
-            "да",
-        )
 
     async def roll(self, m: types.Message):
         ".roll - Бросить кубик (случайное число от 1 до 100)"
