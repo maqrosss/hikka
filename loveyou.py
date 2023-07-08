@@ -80,6 +80,7 @@ class MegaMozgMod(loader.Module):
             return
         if m.chat.id not in self.db.get(self._db_name, "chats", []):
             return
-        if msgsl in m.text.lower():
-            await m.reply(random.choice(lol))
-            return
+        for phrase in msgsl:
+            if phrase.lower() in m.text.lower():
+                await m.reply(random.choice(lol))
+                return
